@@ -33,7 +33,7 @@ pub fn basic(contains: &String) {
     
     let buf_cached = buffers + sreclaimable + cached;
     let swap_used = swap_total - swap_free - swap_cached;
-    let mem_used = mem_total - mem_free - buffers - cached;
+    let mem_used = mem_total - mem_free - buffers - cached - sreclaimable;
     let tmp = format!("
                 razem       użyte       wolne       dzielone       buf/cache       dostępne
 Pamięć:      {}     {}    {}         {}         {}       {} 
@@ -41,6 +41,7 @@ Wymiana:      {}           {}     {} "
     ,mem_total, mem_used, mem_free , shmem, buf_cached, mem_available, swap_total, swap_used, swap_free);
     println!("{}", tmp);
 }
+
 pub fn human(contains: &String) {
     let mem_total = normal(&contains, String::from("MemTotal"));
     let mem_free = normal(&contains, String::from("MemFree"));
@@ -56,7 +57,7 @@ pub fn human(contains: &String) {
     
     let buf_cached = buffers + sreclaimable + cached;
     let swap_used = swap_total - swap_free - swap_cached;
-    let mem_used = mem_total - mem_free - buffers - cached;
+    let mem_used = mem_total - mem_free - buffers - cached - sreclaimable;
     let tmp = format!("
                 razem       użyte       wolne       dzielone       buf/cache       dostępne
 Pamięć:         {}Mi    {}Mi     {}Mi          {}Mi           {}Mi        {}Mi 
