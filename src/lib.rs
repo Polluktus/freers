@@ -59,7 +59,7 @@ pub fn mebi(contains: &String) {
     let mem_used = mem_total - mem_free - buffers - cached - sreclaimable;
     let tmp = format!("
                 razem       użyte       wolne       dzielone       buf/cache       dostępne
-Pamięć:         {}Mi    {}Mi     {}Mi          {}Mi           {}Mi        {}Mi 
+Pamięć:         {}Mi    {}Mi      {}Mi          {}Mi           {}Mi        {}Mi 
 Wymiana:         {}Mi       {}Mi      {}Mi"
     ,mem_total/1024, mem_used/1024, mem_free/1024, shmem/1024, buf_cached/1024, mem_available/1024, swap_total/1024, swap_used/1024, swap_free/1024);
     println!("{}", tmp);
