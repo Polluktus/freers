@@ -1,11 +1,10 @@
 fn normal(contains: &String, search_pattern: String) -> i32 {
 
-    let mut mem_lines: Vec<String> = Vec::new();
-    for i in contains.lines() {
-       if i.contains(&search_pattern) {
-           mem_lines.push(i.to_string());
-       }
-    } 
+    let mem_lines: Vec<&str> = contains
+        .lines()
+        .into_iter()
+        .filter(|lines| lines.contains(&search_pattern))
+        .collect();
 
     let mut values: Vec<i32> = Vec::new();
     for i in mem_lines[0].split_whitespace() {
